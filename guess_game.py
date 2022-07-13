@@ -2,23 +2,21 @@ import random
 
 def chooseRandNumber(difficulty = 10):
     secret_number = int(random.randint(0,difficulty))
-    askQuestion("please write down a number\n", secret_number)
-    return secret_number
+    askQuestion(secret_number, "please write down a number\n")
+    #return secret_number
 
-def askQuestion(question = "please write down a number\n", secret_number = 0):
+def askQuestion(secret_number, question = "please write down a number\n"):
+    print("Test to check secret number", secret_number)
     try: 
         input_number = int(input(question))
-        main(input_number, secret_number)
-        return input_number
+        main(input_number, secret_number)  
 
     except ValueError:
         print("Error please write down a number \n")
-        askQuestion(secret_number)
-
+        askQuestion(secret_number) 
+    
 def main(input_number, secret_number):
     user_number = input_number
-    print("secret key", secret_number)
-
     if int(user_number) == int(secret_number):
         print(f"Congrats, you guess the correct number {secret_number}\n")
         replay = input(("Do you want to play again? (y/n)\n"))
@@ -28,9 +26,6 @@ def main(input_number, secret_number):
         else:
             pass
     else:
-        askQuestion("your were wrong, please write down another number \n", secret_number)
+        askQuestion(secret_number, "your were wrong, please write down another number \n")
 
 chooseRandNumber()
-
-
-        
